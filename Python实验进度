@@ -1,0 +1,29 @@
+python   抛出异常
+ ```
+try:
+    do sth
+except:
+    do sth if errors occur in try block
+finally:
+    do last wthever exception occur
+```
+
+```
+class control_execution:
+      def __enter__(self):
+            set things up
+            return thing
+      def __exit__(self, type, value, traceback):
+            tear things down, deal with exceptions
+
+with control_execution() as thing:
+       do sth 
+```
+等价于
+```
+try:
+    execute __enter__()
+    execute with block
+finally:
+    execute __exit__()
+```
