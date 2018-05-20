@@ -27,3 +27,29 @@ try:
 finally:
     execute __exit__()
 ```
+- 每个模块中都有__init__.py，有了它，它所在的文件夹才会被认为是可以被导入或者包含其它的模块和嵌套包的package。里面有这个模块的属性和方法。它在dbdb包被导入的时候执行。
+ 1. __init__.py 中还有一个重要的变量，叫做__all__
+    通过
+```
+from PackageName import *
+```
+     __all__可以实现“全部导入”的功能
+```
+__all__ = ['DBDB', 'connect']
+```
+
+ - interface.py
+ 1. __getitem__(self, key):
+     如果在类中定义了__getitem__(self, key)方法，那么他的实例对象（假设为P）就可以这样P[key]取值。当实例对象做P[key]运算时，就会调用类中的__getitem__()
+     同样的还有
+     __setitem__(self,key,value)：设置给定键的值
+
+     __delitem__(self,key):删除给定键对应的元素。
+
+     __len__():返回元素的数量
+
+     __contains__():判断key在不在数据库中
+
+
+ - physical.py 
+ 1. 使用者可能不想考虑可写字段长度，所以这个模块把打开的文件退化成了不能释放空间的键值数据库。
